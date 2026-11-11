@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYBER SOHAG APP STORE</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">
+    <div class="brand-logo" aria-hidden="true">🔥</div>
+    <div>
+      <h1>CYBER SOHAG <span>APP STORE</span></h1>
+      <p class="tagline">অ্যাপ স্টোর • App Store • CYBER SOHAG BOT HOSTING</p>
+    </div>
+  </div>
+  <a class="btn btn-telegram" href="https://t.me/cyberkingsohag" target="_blank" rel="noopener">💬 Telegram @cyberkingsohag</a>
+</header>
+
+<main>
+  <section class="hero" id="featured">
+    <div class="hero-text">
+      <span class="hero-badge">⭐ Featured • ফিচার্ড</span>
+      <h2>CYBER SOHAG BOT HOSTING</h2>
+      <p>৩০টি পর্যন্ত বট হোস্ট করুন। অ্যাডমিন আনলিমিটেড। নতুন অ্যাকাউন্ট অ্যাডমিনের অনুমতির পর চালু হয়।</p>
+      <p class="hero-en">Host up to 30 bots. Admin unlimited. New accounts start after admin approval.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://t.me/cyberkingsohag" target="_blank" rel="noopener">🚀 Telegram-এ নিন</a>
+        <button class="btn btn-ghost" type="button" data-open-app="bot-hosting">বিস্তারিত দেখুন • Details</button>
+      </div>
+    </div>
+    <div class="hero-card" aria-hidden="true">
+      <div class="hero-icon">🔥</div>
+      <p>CYBER SOHAG</p>
+      <strong>BOT HOSTING</strong>
+      <span>30 Bots • Admin Unlimited</span>
+    </div>
+  </section>
+
+  <section class="toolbar">
+    <label class="search-box">
+      <span aria-hidden="true">🔍</span>
+      <input type="search" id="searchInput" placeholder="অ্যাপ খুঁজুন… / Search apps…" aria-label="Search apps">
+    </label>
+    <div class="chips" id="categoryChips" role="group" aria-label="Category filter">
+      <button type="button" class="chip active" data-category="All">All • সবগুলো</button>
+      <button type="button" class="chip" data-category="Bot Hosting">Bot Hosting</button>
+      <button type="button" class="chip" data-category="Telegram Bots">Telegram Bots</button>
+      <button type="button" class="chip" data-category="AI">AI</button>
+      <button type="button" class="chip" data-category="Tools">Tools</button>
+    </div>
+    <label class="sort-box">
+      Sort / সাজান
+      <select id="sortSelect">
+        <option value="name">নাম অনুযায়ী • Name (A–Z)</option>
+        <option value="category">ক্যাটাগরি অনুযায়ী • Category</option>
+      </select>
+    </label>
+  </section>
+
+  <p class="count" id="appCount"></p>
+  <section class="app-grid" id="appGrid" aria-live="polite"></section>
+  <p class="empty" id="emptyMessage" hidden>কোনো অ্যাপ পাওয়া যায়নি। / No apps found. অন্য কিছু খুঁজে দেখুন।</p>
+
+  <section class="add-app">
+    <h2>➕ Add App • অ্যাপ যোগ করুন <span class="admin-tag">Admin</span></h2>
+    <p>এখানে যোগ করা অ্যাপ শুধু এই ব্রাউজারে সেভ হবে (localStorage)। স্থায়ীভাবে যোগ করতে <code>apps.json</code> ফাইলে এডিট করে GitHub-এ আপলোড করতে হবে।</p>
+    <form id="addAppForm">
+      <label>অ্যাপের নাম • App name
+        <input type="text" id="newName" required maxlength="80" placeholder="যেমন: My New Bot">
+      </label>
+      <label>ক্যাটাগরি • Category
+        <select id="newCategory" required>
+          <option value="Bot Hosting">Bot Hosting</option>
+          <option value="Telegram Bots">Telegram Bots</option>
+          <option value="AI">AI</option>
+          <option value="Tools">Tools</option>
+        </select>
+      </label>
+      <label>আইকন • Icon (emoji)
+        <input type="text" id="newIcon" maxlength="4" placeholder="🤖" value="📦">
+      </label>
+      <label>বিবরণ (বাংলা) • Description
+        <textarea id="newDescription" required maxlength="300" rows="3" placeholder="অ্যাপটা কী করে, বাংলায় লিখুন…"></textarea>
+      </label>
+      <button class="btn btn-primary" type="submit">➕ অ্যাপ যোগ করুন</button>
+      <button class="btn btn-ghost" type="button" id="clearLocalApps">আমার যোগ করা অ্যাপ মুছুন</button>
+    </form>
+    <p class="note" id="addAppNote"></p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p><strong>CYBER SOHAG APP STORE</strong> — ক্যাটালগ / ডেমো স্টোর। অ্যাপগুলো এই রিপোতে হোস্ট করা হয় না; ইনস্টল Telegram-এর মাধ্যমে।</p>
+  <p>Install via Telegram: <a href="https://t.me/cyberkingsohag" target="_blank" rel="noopener">@cyberkingsohag</a> • https://t.me/cyberkingsohag</p>
+  <p class="small">No fake prices, ratings or download counts. Price: Contact on Telegram.</p>
+</footer>
+
+<div class="modal" id="appModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal-card">
+    <button class="modal-close" type="button" id="modalClose" aria-label="Close">✕</button>
+    <div class="modal-icon" id="modalIcon">📦</div>
+    <h2 id="modalTitle"></h2>
+    <p class="modal-meta" id="modalMeta"></p>
+    <p id="modalDescription"></p>
+    <p class="modal-en" id="modalDescriptionEn"></p>
+    <p class="modal-price" id="modalPrice"></p>
+    <div class="modal-actions">
+      <a class="btn btn-primary" href="https://t.me/cyberkingsohag" target="_blank" rel="noopener">📥 Install via Telegram</a>
+      <button class="btn btn-ghost" type="button" id="modalCloseBtn">বন্ধ করুন • Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
