@@ -9,10 +9,11 @@
 <body>
 <header class="site-header">
   <div class="brand">
-    <div class="brand-logo" aria-hidden="true">🔥</div>
+    <div class="brand-logo" role="img" aria-label="CYBER SOHAG logo - phoenix"></div>
     <div>
       <h1>CYBER SOHAG <span>APP STORE</span></h1>
       <p class="tagline">অ্যাপ স্টোর • App Store • CYBER SOHAG BOT HOSTING</p>
+      <p class="brand-sub">EXPERT CYBER SECURITY ZONE • PUBLIC HELP CENTER</p>
     </div>
   </div>
   <a class="btn btn-telegram" href="https://t.me/cyberkingsohag" target="_blank" rel="noopener">💬 Telegram @cyberkingsohag</a>
@@ -37,6 +38,14 @@
       <span>30 Bots • Admin Unlimited</span>
     </div>
   </section>
+
+
+  <section class="stats" aria-label="Store statistics">
+    <div class="stat-card"><span class="stat-num" id="statApps">0</span><span class="stat-label">📦 মোট অ্যাপ • Total Apps</span></div>
+    <div class="stat-card"><span class="stat-num" id="statDownloads">0</span><span class="stat-label">📥 মোট ডাউনলোড • Total Downloads</span></div>
+    <div class="stat-card"><span class="stat-num" id="statVisits">0</span><span class="stat-label">👀 সাইট ভিজিট • Site Visits</span></div>
+  </section>
+  <p class="stats-note">এই কাউন্টারটি এই ডিভাইসে সংরক্ষিত হয় — সবার মোট সংখ্যা দেখতে সার্ভার লাগবে। Counts are stored on this device only; a server would be needed for a global total.</p>
 
   <section class="toolbar">
     <label class="search-box">
@@ -92,6 +101,7 @@
 </main>
 
 <footer class="site-footer">
+  <div class="footer-logo" aria-hidden="true"></div>
   <p><strong>CYBER SOHAG APP STORE</strong> — ক্যাটালগ / ডেমো স্টোর। অ্যাপগুলো এই রিপোতে হোস্ট করা হয় না; ইনস্টল Telegram-এর মাধ্যমে।</p>
   <p>Install via Telegram: <a href="https://t.me/cyberkingsohag" target="_blank" rel="noopener">@cyberkingsohag</a> • https://t.me/cyberkingsohag</p>
   <p class="small">No fake prices, ratings or download counts. Price: Contact on Telegram.</p>
@@ -106,8 +116,9 @@
     <p id="modalDescription"></p>
     <p class="modal-en" id="modalDescriptionEn"></p>
     <p class="modal-price" id="modalPrice"></p>
+    <p class="modal-downloads" id="modalDownloads"></p>
     <div class="modal-actions">
-      <a class="btn btn-primary" href="https://t.me/cyberkingsohag" target="_blank" rel="noopener">📥 Install via Telegram</a>
+      <a class="btn btn-primary" id="modalInstallBtn" href="https://t.me/cyberkingsohag" target="_blank" rel="noopener">📥 Install via Telegram</a>
       <button class="btn btn-ghost" type="button" id="modalCloseBtn">বন্ধ করুন • Close</button>
     </div>
   </div>

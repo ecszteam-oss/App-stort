@@ -8,6 +8,41 @@ there are no direct downloads. To install an app, contact the admin on
 Telegram — the Install button in the store opens
 https://t.me/cyberkingsohag.
 
+## Logo
+
+The header shows the new ECSZ phoenix logo (ring text: "EXPERT CYBER
+SECURITY ZONE • PUBLIC HELP CENTER", centre: "ECSZ") with the brand name
+**CYBER SOHAG APP STORE** and the line "EXPERT CYBER SECURITY ZONE •
+PUBLIC HELP CENTER" underneath. A small version of the same logo is in
+the footer.
+
+The logo is embedded as base64 JPEG inside `styles.css` (`.brand-logo`
+and `.footer-logo`, resized to 256×256). No binary image file is in the
+repo, because the GitHub snapshot push only accepts UTF-8 text files.
+To change the logo, resize the new image to 256×256 JPEG and replace
+the base64 data in `styles.css`.
+
+## Stats dashboard
+
+At the top of the store there is a stats bar with three live numbers:
+
+- **Total Apps** — counted from `apps.json` (plus any apps added with
+  the Add App form in this browser).
+- **Total Downloads** — the sum of every app's download count. Clicking
+  **Install** on an app adds 1 to that app's count and updates the card,
+  the detail modal and the total straight away.
+- **Site Visits** — how many times the store has been opened in this
+  browser. It goes up by 1 on every page load.
+
+How counting works: all three numbers are stored in the browser's
+localStorage on that device only. Every app starts with
+`"downloads": 0` in `apps.json`, and the counts grow from real clicks
+and visits on that device.
+
+> এই কাউন্টারটি এই ডিভাইসে সংরক্ষিত হয় — সবার মোট সংখ্যা দেখতে
+> সার্ভার লাগবে। Counts are stored on this device only; a server
+> would be needed for a global total across all visitors.
+
 ## What is in the store?
 
 - **CYBER SOHAG BOT HOSTING** — host up to 30 bots, admin unlimited,
@@ -52,7 +87,8 @@ Edit `apps.json` and add one entry to the list. Example:
   "description_en": "What the app does, in English.",
   "price": "Contact on Telegram",
   "status": "Available",
-  "badge": "New"
+  "badge": "New",
+  "downloads": 0
 }
 ```
 
@@ -69,9 +105,12 @@ and push the change to GitHub.
 - `index.html` — the store page (header, search, filters, hero, grid,
   detail modal, Add App form, footer).
 - `styles.css` — 3D red/orange styling, responsive, system fonts only.
+  Includes the base64 ECSZ phoenix logo (`.brand-logo`, `.footer-logo`),
+  the 3D stats cards and the large 3D app icons.
 - `app.js` — loads `apps.json`, renders the grid, search, filter, sort,
-  detail modal and the local Add App form. No build step, no external
-  JavaScript libraries.
+  detail modal and the local Add App form, and runs the stats dashboard
+  (visit counter, per-app download counter stored in localStorage).
+  No build step, no external JavaScript libraries.
 - `apps.json` — the app catalogue.
 - `README.md` — this file.
 

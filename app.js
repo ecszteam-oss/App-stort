@@ -4,6 +4,9 @@
 
   var TELEGRAM_URL = "https://t.me/cyberkingsohag";
   var LOCAL_KEY = "cyberSohagAppStoreLocalApps";
+  var VISITS_KEY = "cyberSohagAppStoreVisits";
+  var DOWNLOADS_KEY = "cyberSohagAppStoreDownloads";
+  var currentModalApp = null;
   var state = { apps: [], category: "All", query: "", sort: "name" };
 
   var grid = document.getElementById("appGrid");
@@ -36,6 +39,61 @@
     } catch (e) {
       // Storage may be unavailable in some browsers; the grid still renders.
     }
+  }
+
+  function loadDownloads() {
+    try {
+      var parsed = JSON.parse(localStorage.getItem(DOWNLOADS_KEY) || "{}");
+      return parsed && typeof parsed === "object" ? parsed : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveDownloads(map) {
+    try {
+      localStorage.setItem(DOWNLOADS_KEY, JSON.stringify(map));
+    } catch (e) {
+      // Ignore storage errors.
+    }
+  }
+
+  function getVisits() {
+    try {
+      return parseInt(localStorage.getItem(VISITS_KEY) || "0", 10) || 0;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function incrementVisits() {
+    var visits = getVisits() + 1;
+    try {
+      localStorage.setItem(VISITS_KEY, String(visits));
+    } catch (e) {
+      // Ignore storage errors.
+    }
+    return visits;
+  }
+
+  function appDownloads(app) {
+    var map = loadDownloads();
+    return (Number(app.downloads) || 0) + (Number(map[app.id]) || 0);
+  }
+
+  function totalDownloads() {
+    var total = 0;
+    for (var i = 0; i < state.apps.length; i++) total += appDownloads(state.apps[i]);
+    return total;
+  }
+
+  function updateStats() {
+    var appsEl = document.getElementById("statApps");
+    var dlEl = document.getElementById("statDownloads");
+    var visitsEl = document.getElementById("statVisits");
+    if (appsEl) appsEl.textContent = String(state.apps.length);
+    if (dlEl) dlEl.textContent = String(totalDownloads());
+    if (visitsEl) visitsEl.textContent = String(getVisits());
   }
 
   function badgeClass(badge) {
@@ -77,6 +135,7 @@
     var list = filteredApps();
     countEl.textContent = list.length + " টি অ্যাপ • " + list.length + " app(s)";
     emptyEl.hidden = list.length !== 0;
+    updateStats();
     grid.innerHTML = list
       .map(function (app) {
         return (
@@ -95,6 +154,9 @@
           '<p class="app-desc">' +
           escapeHtml(app.description) +
           "</p>" +
+          '<p class="app-downloads">📥 ' +
+          appDownloads(app) +
+          " ডাউনলোড • Downloads</p>" +
           '<div class="app-foot"><span class="' +
           badgeClass(app.badge) +
           '">' +
@@ -118,6 +180,9 @@
 
   function openModal(app) {
     if (!app) return;
+    currentModalApp = app;
+    var modalDl = document.getElementById("modalDownloads");
+    if (modalDl) modalDl.textContent = "📥 " + appDownloads(app) + " ডাউনলোড • Downloads";
     modalIcon.textContent = app.icon || "📦";
     modalTitle.textContent = app.name;
     modalMeta.textContent = app.category + " • " + (app.status || app.badge || "Available");
@@ -129,11 +194,15 @@
   }
 
   function closeModal() {
+    currentModalApp = null;
     modal.hidden = true;
     document.body.style.overflow = "";
   }
 
   function init() {
+    incrementVisits();
+    updateStats();
+
     // Category chips
     document.getElementById("categoryChips").addEventListener("click", function (event) {
       var btn = event.target.closest(".chip");
@@ -173,6 +242,19 @@
       });
     });
 
+    var installBtn = document.getElementById("modalInstallBtn");
+    if (installBtn) {
+      installBtn.addEventListener("click", function () {
+        if (!currentModalApp) return;
+        var map = loadDownloads();
+        map[currentModalApp.id] = (Number(map[currentModalApp.id]) || 0) + 1;
+        saveDownloads(map);
+        var modalDl = document.getElementById("modalDownloads");
+        if (modalDl) modalDl.textContent = "📥 " + appDownloads(currentModalApp) + " ডাউনলোড • Downloads";
+        render();
+      });
+    }
+
     document.getElementById("modalClose").addEventListener("click", closeModal);
     document.getElementById("modalCloseBtn").addEventListener("click", closeModal);
     modal.addEventListener("click", function (event) {
@@ -203,7 +285,8 @@
         description_en: "",
         price: "Contact on Telegram",
         status: "Available",
-        badge: "New"
+        badge: "New",
+        downloads: 0
       };
       var localApps = loadLocalApps();
       localApps.push(app);
