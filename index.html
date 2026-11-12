@@ -2,127 +2,248 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CYBER SOHAG APP STORE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>EXPERT CYBER SECURITY ZONE — CYBER SOHAG APP STORE</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="brand">
-    <div class="brand-logo" role="img" aria-label="CYBER SOHAG logo - phoenix"></div>
-    <div>
-      <h1>CYBER SOHAG <span>APP STORE</span></h1>
-      <p class="tagline">অ্যাপ স্টোর • App Store • CYBER SOHAG BOT HOSTING</p>
-      <p class="brand-sub">EXPERT CYBER SECURITY ZONE • PUBLIC HELP CENTER</p>
-    </div>
-  </div>
-  <a class="btn btn-telegram" href="https://t.me/cyberkingsohag" target="_blank" rel="noopener">💬 Telegram @cyberkingsohag</a>
-</header>
+<div class="cyber-bg"></div>
+<div class="scanline"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
 
-<main>
-  <section class="hero" id="featured">
-    <div class="hero-text">
-      <span class="hero-badge">⭐ Featured • ফিচার্ড</span>
-      <h2>CYBER SOHAG BOT HOSTING</h2>
-      <p>৩০টি পর্যন্ত বট হোস্ট করুন। অ্যাডমিন আনলিমিটেড। নতুন অ্যাকাউন্ট অ্যাডমিনের অনুমতির পর চালু হয়।</p>
-      <p class="hero-en">Host up to 30 bots. Admin unlimited. New accounts start after admin approval.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="https://t.me/cyberkingsohag" target="_blank" rel="noopener">🚀 Telegram-এ নিন</a>
-        <button class="btn btn-ghost" type="button" data-open-app="bot-hosting">বিস্তারিত দেখুন • Details</button>
+<div class="container">
+
+  <!-- ============ AUTH (login / register) ============ -->
+  <section id="authView" class="auth-view" hidden>
+    <header class="header">
+      <div class="logo-ring"><div class="brand-logo large" role="img" aria-label="EXPERT CYBER SECURITY ZONE logo - phoenix"></div></div>
+      <p class="brand-top">EXPERT CYBER SECURITY ZONE</p>
+      <h1 class="site-title">CYBER SOHAG <span>APP STORE</span></h1>
+      <p class="brand-sub">PUBLIC HELP CENTER</p>
+      <div class="site-meta">
+        <span class="meta-chip"><span class="chip-dot"></span>SYSTEM ONLINE</span>
+        <span class="meta-chip gold">✓ VERIFIED STORE</span>
       </div>
+    </header>
+
+    <div class="auth-card">
+      <h2 id="authTitle">🔐 লগইন • Login</h2>
+      <p class="auth-sub" id="authSub">অ্যাকাউন্টে লগইন করে স্টোর ব্যবহার করুন।</p>
+      <p class="auth-error" id="authError" hidden></p>
+
+      <form id="loginForm">
+        <label class="field">ইউজারনেম • Username
+          <input type="text" id="loginUser" required maxlength="40" autocomplete="username" placeholder="যেমন: sohag11">
+        </label>
+        <label class="field">পাসওয়ার্ড • Password
+          <input type="password" id="loginPass" required maxlength="100" autocomplete="current-password" placeholder="••••••••">
+        </label>
+        <button class="btn btn-primary" type="submit">🚀 লগইন করুন • Login</button>
+      </form>
+
+      <form id="registerForm" hidden>
+        <label class="field">আপনার নাম • Name
+          <input type="text" id="regName" required maxlength="60" placeholder="যেমন: সোহাগ">
+        </label>
+        <label class="field">ইউজারনেম • Username
+          <input type="text" id="regUser" required maxlength="40" autocomplete="username" placeholder="ইংরেজিতে, যেমন: sohag123">
+        </label>
+        <label class="field">পাসওয়ার্ড • Password
+          <input type="password" id="regPass" required minlength="4" maxlength="100" autocomplete="new-password" placeholder="কমপক্ষে ৪ অক্ষর">
+        </label>
+        <button class="btn btn-primary" type="submit">✅ অ্যাকাউন্ট খুলুন • Register</button>
+      </form>
+
+      <button class="btn btn-ghost" type="button" id="authToggle">নতুন অ্যাকাউন্ট খুলুন • Create an account</button>
+      <p class="auth-note">অ্যাকাউন্ট এই ডিভাইসে সংরক্ষিত হয়। সবার আসল তালিকা দেখতে সার্ভার লাগবে।</p>
     </div>
-    <div class="hero-card" aria-hidden="true">
-      <div class="hero-icon">🔥</div>
-      <p>CYBER SOHAG</p>
-      <strong>BOT HOSTING</strong>
-      <span>30 Bots • Admin Unlimited</span>
-    </div>
+
+    <footer class="auth-footer">EXPERT CYBER SECURITY ZONE • CYBER SOHAG APP STORE • <a href="https://t.me/cyberkingsohag" target="_blank" rel="noopener">@cyberkingsohag</a></footer>
   </section>
 
+  <!-- ============ STORE ============ -->
+  <div id="appShell" hidden>
+    <header class="header store-header">
+      <div class="brand-row">
+        <div class="logo-ring small"><div class="brand-logo" role="img" aria-label="EXPERT CYBER SECURITY ZONE logo - phoenix"></div></div>
+        <div class="brand-text">
+          <p class="brand-top small">EXPERT CYBER SECURITY ZONE</p>
+          <h1 class="site-title small">CYBER SOHAG <span>APP STORE</span></h1>
+        </div>
+        <button class="profile-btn" type="button" id="profileBtn"><span class="pav" id="topAv">👤</span><span id="topUserName">আমার প্রোফাইল</span></button>
+      </div>
+      <div class="site-meta">
+        <span class="meta-chip"><span class="chip-dot"></span>SYSTEM ONLINE</span>
+        <span class="meta-chip gold">✓ VERIFIED STORE</span>
+      </div>
+    </header>
 
-  <section class="stats" aria-label="Store statistics">
-    <div class="stat-card"><span class="stat-num" id="statApps">0</span><span class="stat-label">📦 মোট অ্যাপ • Total Apps</span></div>
-    <div class="stat-card"><span class="stat-num" id="statDownloads">0</span><span class="stat-label">📥 মোট ডাউনলোড • Total Downloads</span></div>
-    <div class="stat-card"><span class="stat-num" id="statVisits">0</span><span class="stat-label">👀 সাইট ভিজিট • Site Visits</span></div>
-  </section>
-  <p class="stats-note">এই কাউন্টারটি এই ডিভাইসে সংরক্ষিত হয় — সবার মোট সংখ্যা দেখতে সার্ভার লাগবে। Counts are stored on this device only; a server would be needed for a global total.</p>
+    <main id="storeView">
+      <div class="view on" id="view-apps">
+        <div class="stats-row">
+          <div class="stat-card gold">
+            <div class="stat-icon-box">🔥</div>
+            <div class="stat-content">
+              <div class="stat-label">Top Trending</div>
+              <div class="stat-value" id="topTrendApp">লোড হচ্ছে...</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-box">⬇️</div>
+            <div class="stat-content">
+              <div class="stat-label">Total Downloads</div>
+              <div class="stat-value" id="storeTotalDl">0</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-box">📦</div>
+            <div class="stat-content">
+              <div class="stat-label">Total Apps</div>
+              <div class="stat-value" id="statApps">0</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-box">👀</div>
+            <div class="stat-content">
+              <div class="stat-label">Site Visits</div>
+              <div class="stat-value" id="statVisits">0</div>
+            </div>
+          </div>
+        </div>
+        <p class="stats-note">এই কাউন্টারগুলো এই ডিভাইসে সংরক্ষিত হয় — সবার মোট সংখ্যা দেখতে সার্ভার লাগবে। Counts are stored on this device only; a server would be needed for a global total.</p>
 
-  <section class="toolbar">
-    <label class="search-box">
-      <span aria-hidden="true">🔍</span>
-      <input type="search" id="searchInput" placeholder="অ্যাপ খুঁজুন… / Search apps…" aria-label="Search apps">
-    </label>
-    <div class="chips" id="categoryChips" role="group" aria-label="Category filter">
-      <button type="button" class="chip active" data-category="All">All • সবগুলো</button>
-      <button type="button" class="chip" data-category="Bot Hosting">Bot Hosting</button>
-      <button type="button" class="chip" data-category="Telegram Bots">Telegram Bots</button>
-      <button type="button" class="chip" data-category="AI">AI</button>
-      <button type="button" class="chip" data-category="Tools">Tools</button>
-    </div>
-    <label class="sort-box">
-      Sort / সাজান
-      <select id="sortSelect">
-        <option value="name">নাম অনুযায়ী • Name (A–Z)</option>
-        <option value="category">ক্যাটাগরি অনুযায়ী • Category</option>
-      </select>
-    </label>
-  </section>
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="search" id="q" class="search-input" placeholder="Search apps, tools, bots..." aria-label="Search apps">
+        </div>
 
-  <p class="count" id="appCount"></p>
-  <section class="app-grid" id="appGrid" aria-live="polite"></section>
-  <p class="empty" id="emptyMessage" hidden>কোনো অ্যাপ পাওয়া যায়নি। / No apps found. অন্য কিছু খুঁজে দেখুন।</p>
+        <nav class="category-scroll" id="categoryChips">
+          <button type="button" class="cat-btn active" data-category="All">🏠 সবগুলো</button>
+          <button type="button" class="cat-btn" data-category="Bot Hosting">🤖 Bot Hosting</button>
+          <button type="button" class="cat-btn" data-category="Telegram Bots">💬 Telegram Bots</button>
+          <button type="button" class="cat-btn" data-category="AI">✨ AI</button>
+          <button type="button" class="cat-btn" data-category="Tools">🛠️ Tools</button>
+        </nav>
 
-  <section class="add-app">
-    <h2>➕ Add App • অ্যাপ যোগ করুন <span class="admin-tag">Admin</span></h2>
-    <p>এখানে যোগ করা অ্যাপ শুধু এই ব্রাউজারে সেভ হবে (localStorage)। স্থায়ীভাবে যোগ করতে <code>apps.json</code> ফাইলে এডিট করে GitHub-এ আপলোড করতে হবে।</p>
-    <form id="addAppForm">
-      <label>অ্যাপের নাম • App name
-        <input type="text" id="newName" required maxlength="80" placeholder="যেমন: My New Bot">
-      </label>
-      <label>ক্যাটাগরি • Category
-        <select id="newCategory" required>
-          <option value="Bot Hosting">Bot Hosting</option>
-          <option value="Telegram Bots">Telegram Bots</option>
-          <option value="AI">AI</option>
-          <option value="Tools">Tools</option>
-        </select>
-      </label>
-      <label>আইকন • Icon (emoji)
-        <input type="text" id="newIcon" maxlength="4" placeholder="🤖" value="📦">
-      </label>
-      <label>বিবরণ (বাংলা) • Description
-        <textarea id="newDescription" required maxlength="300" rows="3" placeholder="অ্যাপটা কী করে, বাংলায় লিখুন…"></textarea>
-      </label>
-      <button class="btn btn-primary" type="submit">➕ অ্যাপ যোগ করুন</button>
-      <button class="btn btn-ghost" type="button" id="clearLocalApps">আমার যোগ করা অ্যাপ মুছুন</button>
-    </form>
-    <p class="note" id="addAppNote"></p>
-  </section>
-</main>
+        <div id="warnTicker"><div class="wt-track"><span class="wt-txt">⚠️ সতর্কতা: কোনো অ্যাপ সম্পর্কে ভালোভাবে না জেনে ডাউনলোড করবেন না — ডাউনলোডের আগে অ্যাপের বিস্তারিত ভালো করে দেখে নিন। ⚠️ </span><span class="wt-txt">⚠️ সতর্কতা: কোনো অ্যাপ সম্পর্কে ভালোভাবে না জেনে ডাউনলোড করবেন না — ডাউনলোডের আগে অ্যাপের বিস্তারিত ভালো করে দেখে নিন। ⚠️ </span></div></div>
 
-<footer class="site-footer">
-  <div class="footer-logo" aria-hidden="true"></div>
-  <p><strong>CYBER SOHAG APP STORE</strong> — ক্যাটালগ / ডেমো স্টোর। অ্যাপগুলো এই রিপোতে হোস্ট করা হয় না; ইনস্টল Telegram-এর মাধ্যমে।</p>
-  <p>Install via Telegram: <a href="https://t.me/cyberkingsohag" target="_blank" rel="noopener">@cyberkingsohag</a> • https://t.me/cyberkingsohag</p>
-  <p class="small">No fake prices, ratings or download counts. Price: Contact on Telegram.</p>
-</footer>
+        <div class="sec-title">🏆 টপ ডাউনলোড <span>সবচেয়ে জনপ্রিয়</span></div>
+        <div class="feat-row" id="topRow"></div>
 
-<div class="modal" id="appModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
-  <div class="modal-card">
-    <button class="modal-close" type="button" id="modalClose" aria-label="Close">✕</button>
-    <div class="modal-icon" id="modalIcon">📦</div>
-    <h2 id="modalTitle"></h2>
-    <p class="modal-meta" id="modalMeta"></p>
-    <p id="modalDescription"></p>
-    <p class="modal-en" id="modalDescriptionEn"></p>
-    <p class="modal-price" id="modalPrice"></p>
-    <p class="modal-downloads" id="modalDownloads"></p>
-    <div class="modal-actions">
-      <a class="btn btn-primary" id="modalInstallBtn" href="https://t.me/cyberkingsohag" target="_blank" rel="noopener">📥 Install via Telegram</a>
-      <button class="btn btn-ghost" type="button" id="modalCloseBtn">বন্ধ করুন • Close</button>
-    </div>
+        <div class="sec-title">✨ ফিচার্ড</div>
+        <div class="feat-row" id="featTrack"></div>
+        <div class="dots" id="featDots"></div>
+
+        <div class="sec-title">🎯 আপনার জন্য</div>
+        <div class="feat-row" id="suggestRow"></div>
+
+        <div class="sec-title">📱 সব অ্যাপ</div>
+        <p class="count" id="appCount"></p>
+        <div class="apps-grid" id="allGrid">
+          <div class="skeleton-card"><div class="skel-icon"></div><div class="skel-line"></div><div class="skel-line short"></div></div>
+          <div class="skeleton-card"><div class="skel-icon"></div><div class="skel-line"></div><div class="skel-line short"></div></div>
+          <div class="skeleton-card"><div class="skel-icon"></div><div class="skel-line"></div><div class="skel-line short"></div></div>
+          <div class="skeleton-card"><div class="skel-icon"></div><div class="skel-line"></div><div class="skel-line short"></div></div>
+        </div>
+        <p class="empty" id="emptyMessage" hidden>কোনো অ্যাপ পাওয়া যায়নি। / No apps found.</p>
+      </div>
+
+      <div class="view" id="view-charts">
+        <div class="sec-title">🏆 টপ চার্ট <span>ডাউনলোড অনুযায়ী</span></div>
+        <div id="chartsList"></div>
+      </div>
+
+      <div class="view" id="view-you">
+        <div class="sec-title">👤 আমার প্রোফাইল</div>
+        <div id="youBox"></div>
+      </div>
+
+      <div class="view" id="view-admin">
+        <div class="sec-title">🛡️ অ্যাডমিন প্যানেল <span>Admin Panel</span></div>
+        <div class="stats-row admin-stats">
+          <div class="stat-card gold">
+            <div class="stat-icon-box">👥</div>
+            <div class="stat-content">
+              <div class="stat-label">Registered Users</div>
+              <div class="stat-value" id="adminTotalUsers">0</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-box">📦</div>
+            <div class="stat-content">
+              <div class="stat-label">Total Apps</div>
+              <div class="stat-value" id="adminTotalApps">0</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-box">⬇️</div>
+            <div class="stat-content">
+              <div class="stat-label">Total Downloads</div>
+              <div class="stat-value" id="adminTotalDl">0</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-box">👀</div>
+            <div class="stat-content">
+              <div class="stat-label">Site Visits</div>
+              <div class="stat-value" id="adminTotalVisits">0</div>
+            </div>
+          </div>
+        </div>
+        <p class="stats-note">এই তালিকা এই ডিভাইসে রেজিস্টার করা অ্যাকাউন্টের — সবার আসল তালিকা দেখতে সার্ভার লাগবে।</p>
+        <div class="sec-title">👥 রেজিস্টার করা ইউজাররা</div>
+        <div id="adminUserList"></div>
+
+        <section class="add-app">
+          <h2>➕ Add App • অ্যাপ যোগ করুন <span class="admin-tag">Admin</span></h2>
+          <p>এখানে যোগ করা অ্যাপ শুধু এই ব্রাউজারে সেভ হবে (localStorage)। স্থায়ীভাবে যোগ করতে <code>apps.json</code> ফাইলে এডিট করে GitHub-এ আপলোড করতে হবে।</p>
+          <form id="addAppForm">
+            <label class="field">অ্যাপের নাম • App name
+              <input type="text" id="newName" required maxlength="80" placeholder="যেমন: My New Bot">
+            </label>
+            <label class="field">ক্যাটাগরি • Category
+              <select id="newCategory" required>
+                <option value="Bot Hosting">Bot Hosting</option>
+                <option value="Telegram Bots">Telegram Bots</option>
+                <option value="AI">AI</option>
+                <option value="Tools">Tools</option>
+              </select>
+            </label>
+            <label class="field">আইকন • Icon (emoji)
+              <input type="text" id="newIcon" maxlength="4" placeholder="🤖" value="📦">
+            </label>
+            <label class="field">বিবরণ (বাংলা) • Description
+              <textarea id="newDescription" required maxlength="300" rows="3" placeholder="অ্যাপটা কী করে, বাংলায় লিখুন…"></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">➕ অ্যাপ যোগ করুন</button>
+            <button class="btn btn-ghost" type="button" id="clearLocalApps">আমার যোগ করা অ্যাপ মুছুন</button>
+          </form>
+          <p class="note" id="addAppNote"></p>
+        </section>
+      </div>
+    </main>
+
+    <section id="detailView"></section>
+
+    <footer class="site-footer">
+      <div class="footer-logo" aria-hidden="true"></div>
+      <p><strong>EXPERT CYBER SECURITY ZONE</strong> — <strong>CYBER SOHAG APP STORE</strong></p>
+      <p>ক্যাটালগ / ডেমো স্টোর। অ্যাপগুলো এই রিপোতে হোস্ট করা হয় না; ইনস্টল Telegram-এর মাধ্যমে।</p>
+      <p>Install via Telegram: <a href="https://t.me/cyberkingsohag" target="_blank" rel="noopener">@cyberkingsohag</a> • https://t.me/cyberkingsohag</p>
+      <p class="small">No fake prices, ratings or download counts. Price: Contact on Telegram.</p>
+    </footer>
   </div>
 </div>
+
+<nav class="bottomnav" id="bottomNav" hidden>
+  <button type="button" class="bnav on" data-view="view-apps"><b>🏠</b>হোম</button>
+  <button type="button" class="bnav" data-view="view-charts"><b>📊</b>চার্ট</button>
+  <button type="button" class="bnav" id="navSearch"><b>🔍</b>খুঁজুন</button>
+  <button type="button" class="bnav" data-view="view-you"><b>👤</b>আমার</button>
+  <button type="button" class="bnav" id="navAdmin" data-view="view-admin" hidden><b>🛡️</b>অ্যাডমিন</button>
+</nav>
 
 <script src="app.js"></script>
 </body>
